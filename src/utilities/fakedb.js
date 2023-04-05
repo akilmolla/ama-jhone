@@ -33,7 +33,7 @@ const getShoppingCart = () => {
 }
 
 const deleteShoppingCart = () => {
-    localStorage.removeItem('shopping-cart');
+    localStorage.removeItem('tshopping-car');
 }
 
 export {

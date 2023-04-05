@@ -3,12 +3,18 @@ import './Cart.css'
 
 const Cart = ({cart}) => {
     // console.log(props)
-    console.log(cart)
+    // console.log(cart)
     let totalPrice=0;
     let totalShopping =0 ;
+    let quantity= 0;
     for(const product of cart){
-        totalPrice =totalPrice+product.price
+        /* if(product.quantity ===0){
+            product.quantity = 1;
+        } */
+        // product.quantity = product.quantity || 1;
+        totalPrice =totalPrice+product.price * product.quantity
         totalShopping= totalShopping + product.shipping
+        quantity=quantity+product.quantity
     }
     let tax = totalPrice*7/100;
     let grandTotal=totalPrice+totalShopping+tax
@@ -16,7 +22,7 @@ const Cart = ({cart}) => {
     return (
         <div className='cart'>
             <h4>order Summary</h4>
-             <p>Selected Items :{cart.length}</p>
+             <p>Selected Items :{quantity}</p>
              <p>Total Price:${totalPrice}</p>
              <p>Shippimg:{totalShopping}</p>
              <p>Tax:${tax.toFixed(2)}</p>
